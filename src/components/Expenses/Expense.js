@@ -4,6 +4,7 @@ import Card from "../UI/Card"
 
 function Expense(props) {
   return (
+      
       <Card className="expenses">
         <ExpenseItem
           title={props.expenses[0].title}
