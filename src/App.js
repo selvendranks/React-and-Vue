@@ -7,10 +7,17 @@ function App() {
     { title: 'Bike Insurance', amount: 100, date: new Date(2022, 2, 23) },
     { title: 'Truck Insurance', amount: 500, date: new Date(2022, 7, 28) }
   ]
+  
+  function addnew(newData){
+    const saveExpenseData ={
+      ...newData
+    }
+  console.log(saveExpenseData)
+  }
 
   return (
     <div>
-       <NewExpense> </NewExpense>
+       <NewExpense  newData ={addnew}> </NewExpense>
       <Expense expenses = {expenses}></Expense>
     </div>
   );
