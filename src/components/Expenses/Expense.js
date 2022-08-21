@@ -11,6 +11,25 @@ function Expense(props) {
     setYear(Year);
   }
 
+  const filtered = props.expenses.filter((expense) => {
+    return expense.date.getFullYear() == enteredYear;
+  });
+
+  let expenseContent = <p>no expense found</p>
+
+  if(filtered.length > 0){
+    expenseContent = (
+      filtered.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        ></ExpenseItem>
+      ))
+    )
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -18,14 +37,24 @@ function Expense(props) {
           getYear={filterYear}
           selected={enteredYear}
         ></ExpensesFilter>
-        {props.expenses.map((expense) => (
-          <ExpenseItem
-            key = {expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          ></ExpenseItem>
-        ))};
+        {/* {filtered.length === 0 ? (
+          <p>no results found</p>
+        ) : (
+          filtered.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+            ></ExpenseItem>
+          ))
+        )} */}
+
+{filtered.length === 0 &&  expenseContent}   
+          
+          {/* in jsx format the condition returns the element to the right of the operator if the left side is true */}
+     {filtered.length > 0 &&  expenseContent}
+
       </Card>
     </div>
   );

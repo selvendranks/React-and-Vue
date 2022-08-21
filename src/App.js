@@ -7,7 +7,8 @@ import NewExpense from "./components/NewExpense/NewExpense";
 const DUMMY_EXPENSE = [
   { title: 'Car Insurance', amount: 294.67, date: new Date(2022, 6, 20) , id : 1},
   { title: 'Bike Insurance', amount: 100, date: new Date(2022, 2, 23) , id : 2},
-  { title: 'Truck Insurance', amount: 500, date: new Date(2022, 7, 28) , id : 3}
+  { title: 'Truck Insurance', amount: 500, date: new Date(2022, 7, 28) , id : 3},
+  { title: 'boat Insurance', amount: 500, date: new Date(2020, 7, 28) , id : 4}
 ]
 
 
