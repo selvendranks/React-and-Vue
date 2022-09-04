@@ -1,9 +1,10 @@
 import Card from "../UI/Card";
 import styles from "./AddUser.module.css";
 import Button from "../UI/Button";
+import ErrorModel from "../UI/ErrorModel";
 import { useState } from "react";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [enteredUserName, setUserName] = useState("");
   const [enteredAge, setAge] = useState("");
 
@@ -23,29 +24,42 @@ const AddUser = () => {
 
     setUserName("");
     setAge("");
-    console.log(enteredUserName,enteredAge)
+    console.log(enteredUserName, enteredAge);
+    const User = {
+      name: enteredUserName,
+      age: enteredAge,
+      id: Math.random.toString(),
+    };
+
+    props.addUsers(User);
   };
 
   return (
-    <Card className={styles.input}>
-      <form onSubmit={addUserHandler}>
-        <label htmlFor="username">UserName</label>
-        <input
-          type="text"
-          value={enteredUserName}
-          onChange={usernameHandler}
-          id="username"
-        ></input>
-        <label htmlFor="age">Age (Year)</label>
-        <input
-          type="Number"
-          value={enteredAge}
-          onChange={ageHandler}
-          id="age"
-        ></input>
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+    <div>
+      <ErrorModel
+        title={"An error occured"}
+        message="Something went wrong"
+      ></ErrorModel>
+      <Card className={styles.input}>
+        <form onSubmit={addUserHandler}>
+          <label htmlFor="username">UserName</label>
+          <input
+            type="text"
+            value={enteredUserName}
+            onChange={usernameHandler}
+            id="username"
+          ></input>
+          <label htmlFor="age">Age (Year)</label>
+          <input
+            type="Number"
+            value={enteredAge}
+            onChange={ageHandler}
+            id="age"
+          ></input>
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </div>
   );
 };
 
