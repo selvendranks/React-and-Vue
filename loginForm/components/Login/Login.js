@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState,useRef } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
@@ -14,6 +14,9 @@ const newEmail = (state, action) => {
 };
 
 const Login = (props) => {
+
+
+  
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -60,7 +63,14 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if(formIsValid)
     props.onLogin(emailState.value, enteredPassword);
+    else if(!emailIsValid){
+           
+    }
+    else{
+      
+    }
   };
 
   return (
@@ -86,7 +96,7 @@ const Login = (props) => {
           onBlur={validatePasswordHandler}
         ></Input>
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit" className={classes.btn}>
             Login
           </Button>
         </div>
