@@ -1,25 +1,21 @@
-import { useState } from "react";
-import Cart from "./components/Cart/Cart";
-import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
-import CartProvider from "./store/CartProvider";
+import React, { useState } from 'react';
+
+import './App.css';
+import DemoOutput from './components/Demo/DemoOutput';
+import Button from './components/UI/Button/Button';
+
 function App() {
-
-  const [CartIsShown,SetCartIsShown] = useState(false);
-
-  function CartVisibilityHandler(visibility){
-     SetCartIsShown(visibility);
-     console.log("should work fine")
+  const [showPara,setShowPara] = useState(false)
+  console.log('app')
+  const toggleParaHandler = () => {
+       setShowPara(!showPara);
   }
-
   return (
-    <CartProvider>
-      <Header CartVisibility={CartVisibilityHandler}></Header>
-      <main>
-        <Meals></Meals>
-      </main>
-     {CartIsShown && <Cart CartVisibility={CartVisibilityHandler}></Cart>}
-    </CartProvider>
+    <div className="app">
+      <h1>Hi there!</h1>
+      <DemoOutput show={false}></DemoOutput>
+      <Button onClick={toggleParaHandler}>Submit</Button>
+    </div>
   );
 }
 
