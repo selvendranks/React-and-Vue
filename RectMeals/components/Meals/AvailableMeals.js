@@ -5,25 +5,25 @@ import MealItem from "./MealItem/MealItem";
 const DUMMY_MEALS = [
   {
     id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
+    name: "Rocket Dosa",
+    description: "Crunchy XL dosa",
     price: 22.99,
   },
   {
     id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
+    name: "Kushbu Idli",
+    description: "Soft spongy traditional",
     price: 16.5,
   },
   {
     id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
+    name: "Thandoori chicken",
+    description: "Tasty spicy indian",
     price: 12.99,
   },
   {
     id: "m4",
-    name: "Green Bowl",
+    name: "Salad",
     description: "Healthy...and green...",
     price: 18.99,
   },
