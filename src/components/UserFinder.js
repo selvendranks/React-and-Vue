@@ -15,7 +15,7 @@ class UserFinder extends Component {
   constructor() {
     super();
     this.state = {
-      filteredUsers: DUMMY_USERS,
+      filteredUsers: [],
       searchTerm: "",
     };
   }
@@ -24,6 +24,11 @@ class UserFinder extends Component {
     this.setState({ searchTerm: event.target.value });
     // console.log(event.target.value)
   }
+
+  componentDidMount(){
+    this.setState({filteredUsers: DUMMY_USERS})
+  }
+
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
