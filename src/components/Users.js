@@ -15,6 +15,12 @@ class Users extends Component{
       }
   }
 
+  componentDidUpdate(){
+    if(this.props.users.length ===0 ){
+      throw new Error("dfd")
+    }
+  }
+
   toggleUsersHandler(){
        this.setState((currState) =>  ({showUsers : !currState.showUsers}));
        console.log(this.state.showUsers);
