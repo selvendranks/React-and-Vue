@@ -1,24 +1,46 @@
-import UserFinder from './components/UserFinder';
-import Users from './components/Users';
-import UsersContext from './stores/users-context';
+import React, { useState } from 'react';
 
-
+import MoviesList from './components/MoviesList';
+import './App.css';
 
 function App() {
- 
-  const DUMMY_USERS = [
-    { id: "u1", name: "Max" },
-    { id: "u2", name: "Manuel" },
-    { id: "u3", name: "Julie" },
+
+  const [movies,setMovies] = useState([])
+  const dummyMovies = [
+    {
+      id: 1,
+      title: 'Some Dummy Movie',
+      openingText: 'This is the opening text of the movie',
+      releaseDate: '2021-05-18',
+    },
+    {
+      id: 2,
+      title: 'Some Dummy Movie 2',
+      openingText: 'This is the second opening text of the movie',
+      releaseDate: '2021-05-19',
+    },
   ];
+
   
-  const userContext = {
-    users : DUMMY_USERS
-  }
+    async function fetchMoviesHandler(){
+          const response = await fetch('https://swapi.dev/api/people/1')
+          const movie = await response.json()
+          console.log(movie)
+          setMovies((movies)=> [...movies,movie])
+          console.log(movies)
+          console.log(dummyMovies)
+    }
+  
+
   return (
-    <UsersContext.Provider value={userContext}>
-      <UserFinder></UserFinder>
-    </UsersContext.Provider>
+    <React.Fragment>
+      <section>
+        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+      </section>
+      <section>
+        <MoviesList movies={movies} />
+      </section>
+    </React.Fragment>
   );
 }
 
