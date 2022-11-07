@@ -1,15 +1,29 @@
-import { useRef, useState } from "react";
-import "../index.css"
+import { useState } from "react";
+import "../index.css";
 
 const SimpleInput = (props) => {
-  const nameRef = useRef();
+ 
 
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid,setEnteredNameIsValid] = useState(false);
-  const [enteredNameTouched,setEnteredNameTouched] = useState(false);
+  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  const nameInputBlurHandler = (event) => {
+    setEnteredNameTouched(true);
+    if (enteredName.trim() === "") {
+      //if input is empty
+      setEnteredNameIsValid(false);
+      return;
+    }
+    setEnteredNameIsValid(true);
+  };
 
   const nameInputHandler = (event) => {
     setEnteredName(event.target.value);
+    if (event.target.value.trim() !== "") {
+      //if input is not empty
+      setEnteredNameIsValid(true);
+    }
   };
 
   const formSubmitHandler = (event) => {
@@ -17,21 +31,20 @@ const SimpleInput = (props) => {
 
     setEnteredNameTouched(true);
 
-    if(enteredName.trim() === ""){ //if input is empty
-          setEnteredNameIsValid(false)
-                return;
+    if (enteredName.trim() === "") {
+      //if input is empty
+      setEnteredNameIsValid(false);
+      return;
     }
 
-    setEnteredNameIsValid(true)
-
-    console.log(enteredName);
-    console.log(nameRef.current.value);
-    setEnteredName("")
+    setEnteredNameIsValid(true);
   };
-  
-  let nameInputIsValid =  !enteredNameIsValid && enteredNameTouched
 
-  let nameInputClasses = nameInputIsValid ? 'form-control invalid' : 'form-control'
+  let nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
+
+  let nameInputClasses = nameInputIsValid
+    ? "form-control invalid"
+    : "form-control";
 
   return (
     <form onSubmit={formSubmitHandler}>
@@ -41,12 +54,14 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameInputHandler}
-          ref={nameRef}
+          onBlur={nameInputBlurHandler}
           value={enteredName}
-          
         />
-        {nameInputIsValid && <p className="error-text">Name must not be empty</p>}
+        {nameInputIsValid && (
+          <p className="error-text">Name must not be empty</p>
+        )}
       </div>
+      
       <div className="form-actions">
         <button>Submit</button>
       </div>
