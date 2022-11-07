@@ -5,25 +5,18 @@ const SimpleInput = (props) => {
  
 
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
+  // const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  const enteredNameIsValid = enteredName.trim() !== "";
 
   const nameInputBlurHandler = (event) => {
     setEnteredNameTouched(true);
-    if (enteredName.trim() === "") {
-      //if input is empty
-      setEnteredNameIsValid(false);
-      return;
-    }
-    setEnteredNameIsValid(true);
   };
 
   const nameInputHandler = (event) => {
     setEnteredName(event.target.value);
-    if (event.target.value.trim() !== "") {
-      //if input is not empty
-      setEnteredNameIsValid(true);
-    }
+    setEnteredNameTouched(true);
   };
 
   const formSubmitHandler = (event) => {
@@ -31,13 +24,13 @@ const SimpleInput = (props) => {
 
     setEnteredNameTouched(true);
 
-    if (enteredName.trim() === "") {
+    if (!enteredNameIsValid) {
       //if input is empty
-      setEnteredNameIsValid(false);
       return;
     }
-
-    setEnteredNameIsValid(true);
+    setEnteredNameTouched(false)
+    console.log(enteredName)
+    setEnteredName("")
   };
 
   let nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
