@@ -1,21 +1,30 @@
 import {createStore} from 'redux'
 
-const counterFunc = (state = {counter :0}, action) =>{
-    
-    if(action.type === 'increment'){
-        return {
-           counter : state.counter + (1*action.times)
-        }
-    }
-    if(action.type === 'decrement'){
-        return {
-           counter : state.counter - 1
-        }
-    }
-    else{
-        return state
-    }
+const initialState = {counter:0 , showCounter: true}
 
+const counterFunc = (state = initialState,action) =>{
+
+ if(action.type === 'decrement')
+    return {
+        ...state,
+        counter : state.counter - 1
+    }
+  else  if(action.type === 'decrement')
+    return {
+        ...state,
+        counter : state.counter - 1
+    }
+  
+  else if (action.type === 'toggle'){
+
+    return{
+      ...state,
+       showCounter : !state.showCounter
+    }
+  }
+  else{
+     return state;
+  }
 }
 
 
