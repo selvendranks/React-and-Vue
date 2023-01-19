@@ -101,7 +101,7 @@ const Cart = (props) => {
     <div className={classes.actions}>
       <button className={classes.button} onClick={closeModal}>
         Close
-      </button>
+      </button> 
      
     </div>
     </>
