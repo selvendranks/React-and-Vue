@@ -2,8 +2,8 @@ const app = Vue.createApp({
   data() {
     return {
       courseGoal: [
-        { text: "Wikipedia", link: "www.wikipedia.com" },
-        { text: "Google", link: "www.google.com" },
+        { text: "<h5>Wikipedia</h5>", link: "www.wikipedia.com" },
+        { text: "<h5>Google</h5>", link: "www.google.com" },
       ],
     };
   },

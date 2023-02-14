@@ -18,7 +18,7 @@
     </header>
     <section id="user-goal">
       <h2>My Course Goal</h2>
-      <p v-for="goal of courseGoal"><a v-bind:href="goal.link">{{goal.text}}</a></p>
+      <p v-for="goal of courseGoal"><a v-bind:href="goal.link" v-html="goal.text"></a></p>
       <p>{{outputGoal()}}</p>
     </section>
   </body>
