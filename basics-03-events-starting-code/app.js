@@ -11,7 +11,7 @@ const app = Vue.createApp({
              console.log('life is sad')
      },
       setName(event,name){
-          this.name = event.target.value + name ;
+          this.name = event.target.value ;
       },
      addCounter(num){
        this.counter+=num;
@@ -23,6 +23,10 @@ const app = Vue.createApp({
        
           this.confirmedName = this.name;
        
+     },
+     reset(){
+       this.name = '';
+       this.confirmedName = '';
      }
   }
 });
