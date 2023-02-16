@@ -23,7 +23,7 @@
     <p>Result: {{ counter }}</p>
     <input type="text" v-model="name" v-model="setName($event,'jonny')" v-on:keyup.enter="Confirm">
     <button v-on:click="reset">Reset input</button>
-    <p>{{confirmedName}}</p>
+    <p>{{fullname}}</p>
 
   <form v-on:submit.prevent="submitForm($event)">
     <input type="text">

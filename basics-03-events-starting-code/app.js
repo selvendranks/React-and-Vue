@@ -6,6 +6,14 @@ const app = Vue.createApp({
       confirmedName:''
     };
   },
+  computed:{
+      fullname(){
+        if (this.confirmedName === ''){
+          return '';
+        }
+        else return this.confirmedName+ ' ' +'don';
+      }
+  },
   methods:{
      submitForm(event){ 
              console.log('life is sad')
