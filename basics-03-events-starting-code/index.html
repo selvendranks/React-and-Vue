@@ -17,11 +17,11 @@
   </header>
   <section id="events">
     <h2>Events in Action</h2>
-    <button v-on:click="addCounter(5)">Add 5</button>
-    <button v-on:click.left="removeCounter(5)">Remove 5</button>
+    <button @click="addCounter(5)">Add 5</button>
+    <button @click.left="removeCounter(5)">Remove 5</button>
     <p v-once>starting Counter:{{counter}}</p>
     <p>Result: {{ counter }}</p>
-    <input type="text" v-model="name" v-model="setName($event,'jonny')" v-on:keyup.enter="Confirm">
+    <input type="text" v-model="name" v-model="setName($event,'jonny')" @keyup.enter="Confirm">
     <button v-on:click="reset">Reset input</button>
     <p>{{fullname}}</p>
 
