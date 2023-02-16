@@ -3,9 +3,21 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name : '',
-      confirmedName:''
+      confirmedName:'',
+      fullname:''
     };
   },
+  watch:{
+    counter(latestCount,oldname){ //triggered when name changes
+      
+          if (latestCount>50 || latestCount<0){
+              this.counter = 0;
+          }
+          
+           
+        }
+       
+    },
   computed:{
       fullname(){
         if (this.confirmedName === ''){
