@@ -7,16 +7,21 @@ app = Vue.createApp({
                 
         }
     },
+    computed:{
+         box1select(){
+            return {back:this.box1Selected , active: this.box1Selected};
+         }
+    },
     methods:{
         boxSelect(box){
-            if(box = 'A'){
-                this.box1Selected = true;
+            if(box == 'A'){
+                this.box1Selected = !this.box1Selected;
             }
-            if(box = 'B'){
-                this.box2Selected = true;
+            else if(box == 'B'){
+                this.box2Selected = !this.box2Selected;
             }
-            if(box = 'C'){
-                this.box3Selected = true;
+           else if(box == 'C'){
+                this.box3Selected = !this.box3Selected;
             }
         }
     }
