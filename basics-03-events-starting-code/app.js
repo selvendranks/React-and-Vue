@@ -4,7 +4,10 @@ const app = Vue.createApp({
       counter: 0,
       name : '',
       confirmedName:'',
-      fullname:''
+      fullname:'',
+      posts:[
+        {name:['donkey','monkey']} , {name:['donk','mon']}
+      ]
     };
   },
   watch:{
