@@ -22,7 +22,9 @@
       <button @click="addGoal">Add Goal</button>
       <p v-show="goals.length === 0">No goals have been added yet - please start adding some!</p>
       <ul v-show="goals.length >0">
-        <li v-for="(goal,index) of goals">{{goal}}</li>
+        <li v-for="(goal,index) of goals" :key="goal" @click="removeGoal(index)">{{goal}}
+          <input type="text" @click.stop>
+        </li>
       </ul>
       <ul>
         <li v-for="value in [{name:'selva',age:18},{name:'don',age:6}]">{{value.name}}</li>
