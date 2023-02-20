@@ -29,15 +29,28 @@
           <div class="healthbar__value" :style="playerHealthBar"></div>
         </div>
       </section>
-      <section id="controls">
+      <section v-if="winner" class="container">
+           <h2>Game over</h2>
+           <h3  v-if="winner == 'Draw'" style="color: black;">Draw</h3>
+           <h3 v-if="winner == 'Player'" style="color: green;">You won the game</h3>
+           <h3 v-if="winner == 'Monster'" style="color: red;">Monster won the game</h3>
+      </section>
+      <section id="controls" v-else>
         <button @click="attackMonster">ATTACK</button>
         <button @click="specialAttack" :disabled="mayUseSpecialAttack">SPECIAL ATTACK</button>
         <button @click="healPlayer">HEAL</button>
-        <button>SURRENDER</button>
+        <button @click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-for="log of battleLog">
+            <span v-if="log.who == 'player' && (log.what =='attack' || log.what=='special')" style="color:blue">You damaged Monster by {{log.value}}</span>
+            <span v-else-if="log.who == 'monster' && log.what =='attack'" style="color:red">Monster damaged You by {{log.value}}</span>
+            <span v-else-if="log.who == 'player' && log.what =='health'" style="color:green">You healed by {{log.value}}</span>
+            <span v-else-if="log.who == 'player' && log.what =='Surrender'" style="color:black">You surrendered</span>
+          </li>
+        </ul>
       </section>
     </div>
   </body>
