@@ -16,6 +16,32 @@ const app = Vue.createApp({
       console.log(this.$refs.button)
     },
   },
+  beforeCreate(){
+    console.log('beforeCreate()') //before app create
+  },
+  created(){
+    console.log('created()')//after the app initialize
+  },
+  beforeMount(){
+    console.log('beforeMount()')//before dom render
+  },
+  mounted(){
+    console.log('mounted()') //after dom render
+  },
+  beforeUpdate(){
+    console.log('beforeUpdate()') //before dom update
+  },
+  updated(){
+    console.log('updated()') //after dom update
+  },
+  beforeUnmount(){
+    console.log('beforeUnmount()') //before unmount app
+
+  },
+  afterUnmount(){
+    console.log('afterUnmount()') //after unmount
+  }
+
 });
 
 app.mount('#app');
