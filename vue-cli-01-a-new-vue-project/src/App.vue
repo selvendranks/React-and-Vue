@@ -3,16 +3,27 @@
     <header>
       <h1>FriendList</h1>
     </header>
+    <add-contacts @friend-data="addContacts"></add-contacts>
     <ul>
       <li v-for="friend of friends" :key="friend.id">
-        <friend-contact :name="friend.name" :phone="friend.phone" :email="friend.email"></friend-contact>
+        <friend-contact
+          :id="friend.id"
+          :name="friend.name"
+          :phone="friend.phone"
+          :email="friend.email"
+          :isFavourite="friend.isFavourite"
+          @toggle-favourite="toggleFavourite"
+          @delete-contact="deleteContact"
+        ></friend-contact>
       </li>
     </ul>
   </section>
 </template>
 
 <script>
+import addContacts from './Components/addContacts.vue';
 export default {
+  components: { addContacts },
   data() {
     return {
       friends: [
@@ -21,15 +32,31 @@ export default {
           name: "Manuel Lorenx",
           phone: "0907987676",
           email: "manu@gmail.com",
+          isFavourite: false,
         },
         {
           id: "julie",
           name: "julie naki",
           phone: "12433545",
           email: "manuel@gmail.com",
+          isFavourite: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavourite(id) {
+       let friend = this.friends.find(friend=> friend.id === id);
+       friend.isFavourite = !friend.isFavourite
+       console.log(this.friends[0])
+    },
+    addContacts(data){
+       this.friends.push(data);
+    },
+    deleteContact(id){
+      this.friends =  this.friends.filter(friend=>friend.id !== id);
+      console.log(this.friends);
+    }
   },
 };
 </script>
@@ -65,7 +92,7 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li ,#app form{
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
