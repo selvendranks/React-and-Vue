@@ -36,7 +36,8 @@ export default {
   },
   provide(){
     return {
-        topics: this.topics
+        topics: this.topics,
+        selectTopic: this.activateTopic
     }
   },
   methods: {
