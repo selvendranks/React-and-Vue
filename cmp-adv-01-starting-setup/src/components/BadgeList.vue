@@ -1,29 +1,24 @@
 <template>
   <base-card>
-    <h2>Available Badges</h2>
-    <ul>
-      <li>
-        <base-badge type="admin" caption="ADMIN"></base-badge>
-      </li>
-      <li>
-        <base-badge type="author" caption="AUTHOR"></base-badge>
-      </li>
-    </ul>
+    <template v-slot:default>
+      <h2>Available Badges</h2>
+      <ul>
+        <li>
+          <base-badge type="admin" caption="ADMIN"></base-badge>
+        </li>
+        <li>
+          <base-badge type="author" caption="AUTHOR"></base-badge>
+        </li>
+      </ul>
+    </template>
   </base-card>
 </template>
 
 <script>
-
-
-
-
-export default {
-
-}
+export default {};
 </script>
 
-<style scoped
-BaseCard>
+<style scoped BaseCard>
 h2 {
   margin: 0.5rem 0;
   color: #3a3a3a;

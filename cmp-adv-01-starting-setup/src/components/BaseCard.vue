@@ -1,15 +1,14 @@
 <template>
-    <section>
-      <slot></slot>  
-    </section>
+  <section>
+    <div>
+      <slot name="header"></slot>
+    </div>
+    <slot></slot>
+  </section>
 </template>
 
-
 <script>
-
-export default {
-    
-}
+export default {};
 </script>
 
 <style scoped>
