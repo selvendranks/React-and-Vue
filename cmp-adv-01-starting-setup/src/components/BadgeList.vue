@@ -1,6 +1,6 @@
 <template>
   <base-card>
-    <template v-slot:default>
+    <template #default>
       <h2>Available Badges</h2>
       <ul>
         <li>
