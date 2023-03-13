@@ -1,9 +1,10 @@
 <template>
   <div>
-
     <button @click="setcomponent('dynamiccmp-1')">Load component 1</button>
     <button @click="setcomponent('dynamiccmp-2')">Load component 2</button>
-    <component :is="activeDynamicCmp"></component>
+    <keep-alive>
+      <component :is="activeDynamicCmp"></component>
+    </keep-alive>
     <the-header></the-header>
     <badge-list></badge-list>
     <user-info
@@ -14,8 +15,8 @@
 
     <scoped-slot>
       <template #default="slotProps">
-         <h2>{{slotProps['item']}}</h2>
-         <p>{{slotProps['otherItem']}}</p>
+        <h2>{{ slotProps["item"] }}</h2>
+        <p>{{ slotProps["otherItem"] }}</p>
       </template>
     </scoped-slot>
   </div>
@@ -26,22 +27,21 @@ import TheHeader from "./components/TheHeader.vue";
 import BadgeList from "./components/BadgeList.vue";
 import UserInfo from "./components/UserInfo.vue";
 import scopedSlot from "./components/scopedSlot.vue";
-import DynamicCmp1 from "./components/DynamicCmp1.vue"
-import DynamicCmp2 from "./components/DynamicCmp2.vue"
+import DynamicCmp1 from "./components/DynamicCmp1.vue";
+import DynamicCmp2 from "./components/DynamicCmp2.vue";
 
 export default {
   components: {
-    
     "the-header": TheHeader,
     "badge-list": BadgeList,
     "user-info": UserInfo,
     "scoped-slot": scopedSlot,
-    "dynamiccmp-1":DynamicCmp1,
-    "dynamiccmp-2":DynamicCmp2
+    "dynamiccmp-1": DynamicCmp1,
+    "dynamiccmp-2": DynamicCmp2,
   },
   data() {
     return {
-      activeDynamicCmp : 'Default',
+      activeDynamicCmp: "Default",
       activeUser: {
         name: "Maximilian Schwarzmüller",
         description: "Site owner and admin",
@@ -49,11 +49,11 @@ export default {
       },
     };
   },
-  methods:{
-    setcomponent(cmp){
-        this.activeDynamicCmp = cmp
-    }
-  }
+  methods: {
+    setcomponent(cmp) {
+      this.activeDynamicCmp = cmp;
+    },
+  },
 };
 </script>
 
